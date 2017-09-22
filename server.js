@@ -19,9 +19,8 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/cnetScraper");
+mongoose.connect("mongodb://localhost/cnetScraper" || "mongodb://heroku_psctkwk6:na8q5rg38tb2imrf2q88if0t00@ds147044.mlab.com:47044/heroku_psctkwk6");
 
-//mongodb://heroku_psctkwk6:na8q5rg38tb2imrf2q88if0t00@ds147044.mlab.com:47044/heroku_psctkwk6
 
 var db = mongoose.connection;
 
@@ -128,6 +127,6 @@ app.post("/article/:id", function(req, res) {
 	});
 });
 
-app.listen(3300, function() {
+app.listen(process.env.PORT || 3300, function() {
   console.log("App running on port 3300!");
 });
