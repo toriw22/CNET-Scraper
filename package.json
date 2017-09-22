@@ -8,5 +8,14 @@
     "start": "node server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.1",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.15.4",
+    "express-handlebars": "^3.0.0",
+    "morgan": "^1.7.0",
+    "mongoose": "^4.11.12",
+    "request": "^2.82.0"
+  }
 }
