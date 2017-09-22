@@ -6,6 +6,7 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var Comment = require("./models/comment.js");
 var Article = require("./models/article.js");
+var SavedArticle = require("./models/savedarticle.js");
 
 mongoose.Promise = Promise;
 
@@ -18,7 +19,10 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://heroku_psctkwk6:na8q5rg38tb2imrf2q88if0t00@ds147044.mlab.com:47044/heroku_psctkwk6");
+mongoose.connect("mongodb://localhost/cnetScraper");
+
+//mongodb://heroku_psctkwk6:na8q5rg38tb2imrf2q88if0t00@ds147044.mlab.com:47044/heroku_psctkwk6
+
 var db = mongoose.connection;
 
 db.on("error", function(error) {
@@ -57,6 +61,18 @@ app.get("/scrape", function(req, res) {
 
 app.get("/comments", function(req, res) {
 	Comment.find({}, function(error, docs) {
+		if (error) {
+			console.log(error);
+		}
+		else {
+
+			res.json(docs);
+		}
+	});
+});
+
+app.get("/saved", function(req, res) {
+	SavedArticle.find({}, function(error, docs) {
 		if (error) {
 			console.log(error);
 		}
