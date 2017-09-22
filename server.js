@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/cnetScraper" || "mongodb://heroku_psctkwk6:na8q5rg38tb2imrf2q88if0t00@ds147044.mlab.com:47044/heroku_psctkwk6");
+mongoose.connect("mongodb://heroku_psctkwk6:na8q5rg38tb2imrf2q88if0t00@ds147044.mlab.com:47044/heroku_psctkwk6");
 var db = mongoose.connection;
 
 db.on("error", function(error) {
